@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% block head %}{% endblock head %}
+{% block content %}
+{% if response %}
+<pre>
+<code class="line-numbers language-{{linguagem}}">
+    {{response}}
+</code>
+</pre>
+{%else%}
+<pre>
+    <code class="line-numbers language-python">
+    if code == None:
+        print("Nao tenho codigo")
+    else:
+        print(code)
+    </code>
+</pre>
+{% endif %}
+{% with text_area_placeholder="Digite o codigo" view_url="correcao"%}
+    {% include "partials/form_correcao.html" %}
+{% endwith %}
+
+{% endblock content %}

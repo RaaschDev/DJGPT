@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% block head %}{% endblock head %}
+{% block content %}
+{% if response %}
+    {% with pergunta=code resposta=response %}
+        {% include "partials/respostas.html" %}
+    {% endwith %}
+{%else%}
+    {% with pergunta="curiosidades da america latina" resposta="A maior floresta tropical do mundo, a Amazônia, está localizada na América Latina, abrangendo nove países da região." %}
+        {% include "partials/respostas.html" %}
+    {% endwith %}
+{% endif %}
+<form method="POST" action="{% url 'geral'%}">
+    {%csrf_token%}
+    <div class="mb-3">
+        <br>
+        <textarea class="form-control" name="code" rows="3" placeholder="Digite uma instrução">{{code}}</textarea>
+        <br>
+        <br>
+        <button type="submit" class="btn btn-secondary">Enviar</button>
+    </div>
+</form>
+
+{% endblock content %}
